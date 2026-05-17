@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hasaki~的房间 · 个人角落</title>
+    <!-- 参考 https://kanjousen.com/ 的极简风格，采用清新柔和的色调 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f8;  /* 类似纸张的温暖米白 */
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #2c3e2f;
+            padding: 2rem 1rem;
+        }
+
+        /* 主容器，类似卡片风格，宽度克制 */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+            padding: 2rem 1.8rem;
+            border: 1px solid #f0ede8;
+        }
+
+        /* 头像与名字区 — 简单居中 */
+        .profile {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            background: #e6e0d5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.3rem;
+            color: #2d4a2b;
+        }
+
+        .sub {
+            color: #6c8268;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        hr {
+            margin: 1.2rem 0;
+            border: none;
+            height: 1px;
+            background: #e2dbd1;
+        }
+
+        /* 区块标题风格：极简下划线 */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 1.6rem 0 0.8rem 0;
+            padding-left: 0.2rem;
+            border-left: 4px solid #b1cfaa;
+            padding-left: 10px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0.8rem 0 1rem 0;
+        }
+
+        .tag {
+            background: #f1efea;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 450;
+            color: #3b5a36;
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 语录/介绍块 */
+        .intro-text {
+            background: #faf7f2;
+            padding: 1rem 1.2rem;
+            border-radius: 24px;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: #2d4a2f;
+        }
+
+        /* 爱好网格 */
+        .hobby-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .hobby-item {
+            background: white;
+            border: 1px solid #e1dcd4;
+            border-radius: 60px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.1s;
+        }
+
+        /* 链接区，类似 kanjousen 的简单列表样式 */
+        .link-list {
+            list-style: none;
+            margin: 0.5rem 0 1.2rem 0;
+        }
+
+        .link-list li {
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #ece5dd;
+            padding-bottom: 0.5rem;
+        }
+
+        .link-list a {
+            text-decoration: none;
+            color: #3f6e3a;
+            font-weight: 470;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.15s;
+        }
+
+        .link-list a:hover {
+            color: #1c4018;
+            padding-left: 4px;
+        }
+
+        .small-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #9aa894;
+            margin-top: 2rem;
+            letter-spacing: 0.3px;
+        }
+
+        .flag {
+            font-size: 1.1rem;
+            vertical-align: middle;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.7rem;
+            color: #b6ad9e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 550px) {
+            .container {
+                padding: 1.4rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 头部个人资料，简单直接 -->
+    <div class="profile">
+        <div class="avatar">
+            ❀
+        </div>
+        <h1>Hasaki~ <span style="font-weight: 400;">/ ⭐羽咲酱⭐</span></h1>
+        <div class="sub">
+            <span class="flag">🏳️‍⚧️</span> 跨性别友好 · 中学期间 · 永远好奇
+        </div>
+    </div>
+
+    <!-- 简短介绍，类似便签风格 -->
+    <div class="intro-text">
+        📍 一枚正在长大的学生 随和敏感 网络原住民<br>
+        🎧 常驻 ACG 世界 | 球场上的奔跑者 | 接纳每一份独特
+    </div>
+
+    <!-- 主要爱好区块 -->
+    <div class="section-title">✨ 爱好 & 日常</div>
+    <div class="hobby-grid">
+        <span class="hobby-item">🏸 羽毛球 · 单打/双打都爱</span>
+        <span class="hobby-item">🎮 ACG · 番剧 & 独立游戏</span>
+        <span class="hobby-item">🏳️‍⚧️ 跨性别/性别友善空间</span>
+        <span class="hobby-item">📖 轻小说 & 日语N4研读中~</span>
+        <span class="hobby-item">🎵 J-POP / 纯音乐 / 术力口</span>
+        <span class="hobby-item">东方project/琪露诺单推</span>
+    </div>
+
+    <!-- 最近在玩的/在追的，类似参考网站的随意感 -->
+    <div class="section-title">🎧 近期沉迷</div>
+    <div class="tag-list">
+        <span class="tag">✨ Bang Dream! It's MyGO!!!!!</span>
+        <span class="tag">🏸 羽毛球男双练习中</span>
+        <span class="tag">🎮 Minecraft / 犹格索托斯的庭院</span>
+        <span class="tag">📺 【clannad】after story</span>
+    </div>
+
+    <!-- 一些关于“跨性别友好”的声明或小句子 -->
+    <div class="section-title">🏳️‍⚧️ 关于友善</div>
+    <div class="intro-text" style="background: #f2efe9;">
+        🌈 这里尊重每一个性别认同与表达，尊重所有性少数群体。不管是称呼还是代词，请自在做自己。<br>
+        中学阶段，希望遇到同样温柔、愿意互相理解的伙伴。💬 如果你有想聊的，随时可以找到我。
+    </div>
+
+    <!-- 联系/社交 类似简易列表，和参考站点的感觉类似 -->
+    <div class="section-title">📮 联络与碎片</div>
+    <ul class="link-list">
+        <li><a href="#"><span>🕊️ 推特 / X</span> <span style="margin-left: auto; font-size:0.7rem;">@hasaki_sama</span></a></li>
+        <li><a href="#"><span>📷 QQ / 日常</span> <span style="margin-left: auto; font-size:0.7rem;">@roika0612</span></a></li>
+        <li><a href="#"><span>✉️ 邮箱 (学生交流)</span> <span style="margin-left: auto; font-size:0.7rem;">hasaki.0612@gmail.com</span></a></li>
+    </ul>
+
+    <!-- 一个小角落，放一句喜欢的 ACG 台词 -->
+    <div class="small-note">
+        ⭐ 「人はひとりじゃない。何かと繋がっている。」—— 不是孤单一人，和什么紧紧相连。
+    </div>
+
+    <!-- 简单footer -->
+    <footer>
+        🏸 保持柔软 | 保持热爱 | 做自己 🌈
+    </footer>
+</div>
+</body>
+</html>
