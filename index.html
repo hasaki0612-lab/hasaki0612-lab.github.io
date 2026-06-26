@@ -2,289 +2,62 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Hasaki~的房间 · 个人角落</title>
-    <!-- 参考 https://kanjousen.com/ 的极简风格，采用清新柔和的色调 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neko 🐾_ 的小房间</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #faf9f8;  /* 类似纸张的温暖米白 */
-            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            line-height: 1.5;
-            color: #2c3e2f;
-            padding: 2rem 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #f5f5f5; color: #333; line-height: 1.8; padding: 20px;
         }
-
-        /* 主容器，类似卡片风格，宽度克制 */
         .container {
-            max-width: 780px;
-            margin: 0 auto;
-            background: #ffffffdd;
-            backdrop-filter: blur(2px);
-            border-radius: 32px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
-            padding: 2rem 1.8rem;
-            border: 1px solid #f0ede8;
+            max-width: 700px; margin: 0 auto; background: #fff;
+            border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
         }
-
-        .container::before {
-            content: "hasaki ' room";
-            position: absolute;
-            top: 10px;
-            right: 16px;
-            font-size: 12px;
-            color: #bbb;
-            letter-spacing: 1px;
-            font-style: italic;
+        .header {
+            background: #87CEEB; color: #fff; padding: 30px; text-align: center;
         }
-
-        /* 头像与名字区 — 简单居中 */
-        .profile {
-            text-align: center;
-            margin-bottom: 2rem;
+        .header .nickname { font-size: 20px; font-weight: 600; }
+        .header .time { font-size: 13px; opacity: 0.85; margin-top: 6px; }
+        .content { padding: 30px; }
+        .content .title { font-size: 18px; font-weight: 600; color: #87CEEB; margin-bottom: 16px; }
+        .content .text { font-size: 15px; color: #444; }
+        .content .text p { margin-bottom: 12px; }
+        .footer {
+            padding: 20px 30px; border-top: 1px solid #f0f0f0;
+            text-align: center; font-size: 12px; color: #aaa;
         }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1rem;
-            background: #e6e0d5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.2rem;
-            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            margin-bottom: 0.3rem;
-            color: #2d4a2b;
-            position: relative;
-            display: inline-block
-        }
-
-        h1::after {
-            content: "";
-            width: 60%;         
-            height: 2px;         
-            background: #b1cfaa; 
-            position: absolute;
-            bottom: -4px;        
-            left: 20%;           
-            border-radius: 1px; 
-        }
-
-        .sub {
-            color: #6c8268;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        hr {
-            margin: 1.2rem 0;
-            border: none;
-            height: 1px;
-            background: #e2dbd1;
-        }
-
-        /* 区块标题风格：极简下划线 */
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin: 1.6rem 0 0.8rem 0;
-            padding-left: 0.2rem;
-            border-left: 4px solid #b1cfaa;
-            padding-left: 10px;
-        }
-
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 0.8rem 0 1rem 0;
-        }
-
-        .tag {
-            background: #f1efea;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 450;
-            color: #3b5a36;
-            transition: all 0.1s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* 语录/介绍块 */
-        .intro-text {
-            background: #faf7f2;
-            padding: 1rem 1.2rem;
-            border-radius: 24px;
-            margin: 1rem 0;
-            font-size: 0.95rem;
-            color: #2d4a2f;
-        }
-
-        /* 爱好网格 */
-        .hobby-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 0.5rem 0 1rem 0;
-        }
-
-        .hobby-item {
-            background: white;
-            border: 1px solid #e1dcd4;
-            border-radius: 60px;
-            padding: 0.4rem 1.2rem;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.1s;
-        }
-
-        /* 链接区，类似 kanjousen 的简单列表样式 */
-        .link-list {
-            list-style: none;
-            margin: 0.5rem 0 1.2rem 0;
-        }
-
-        .link-list li {
-            margin-bottom: 0.8rem;
-            border-bottom: 1px dashed #ece5dd;
-            padding-bottom: 0.5rem;
-        }
-
-        .link-list a {
-            text-decoration: none;
-            color: #3f6e3a;
-            font-weight: 470;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.15s;
-        }
-
-        .link-list a:hover {
-            color: #1c4018;
-            padding-left: 4px;
-        }
-
-        .small-note {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #9aa894;
-            margin-top: 2rem;
-            letter-spacing: 0.3px;
-        }
-
-        .flag {
-            font-size: 1.1rem;
-            vertical-align: middle;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 1.8rem;
-            font-size: 0.7rem;
-            color: #b6ad9e;
-        }
-
-        /* 响应式 */
-        @media (max-width: 550px) {
-            .container {
-                padding: 1.4rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-        }
+        .signature { text-align: right; font-style: italic; color: #888; margin-top: 20px; font-size: 14px; }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- 头部个人资料，简单直接 -->
-    <div class="profile">
-        <div class="avatar">
-            ❀
+    <div class="container">
+        <div class="header">
+            <div class="nickname">Neko 🐾</div>
+            <div class="time">Since2011年6月8日 01:41</div>
         </div>
-        <h1>Hasaki~ <span style="font-weight: 400;">/ ⭐羽咲酱⭐</span></h1>
-        <div class="sub">
-            <span class="flag"></span> 计算机萌新 · 中学期间 · 兴趣至上
+        <div class="content">
+            <div class="title">欢迎来到我的个人页面 awa</div>
+            <div class="text">
+                <p>Hi!这里是Neko 🐾大概是一只猫（meow~）</p>
+                <p>爱好计算机、视觉小说、动漫、术力口 目前日本語在学ing~</p>
+                <p>精神状态时好时坏，喜欢一切可爱的东西（╹◡╹）</p>
+                <p>Neko 尊重每一个性别认同与表达，尊重所有性少数群体。不管是称呼还是代词，请自在做自己。</p>
+                <p>希望可以遇到同样温柔、互相理解的朋友</p>
+                <p>当然，如果你有什么想聊的，也可以随时找我（笑）</p>
+                <p>以下是Neko 的一些SNS链接 欢迎大家骚扰！</p>
+                <ul>
+                    <li><a href="https://twitter.com/hasaki_sama" target="_blank">Twitter</a></li>
+                    <li><a href="https://user.qzone.qq.com/1947936318" target="_blank">QQ</a></li>
+                    <li><a href="https://u.wechat.com/Akiyama_0011" target="_blank">微信</a></li>
+                    <li><a href="https://steamcommunity.com/profiles/76561199698120572/" target="_blank">Steam</a></li>
+                </ul>
+                <p>最后的最后：祝所有陪伴在我身边的朋友们平安喜乐万事顺心呀　(^_−)−☆</p>
+                <div class="signature">——————Neko 🐾</div>
+                <p style="text-align:right; color:#888; font-size:13px;">2026. June 8th.</p>
+            </div>
         </div>
+        <div class="footer">“越过长城 走向世界”</div>
     </div>
-
-    <!-- 简短介绍，类似便签风格 -->
-    <div class="intro-text">
-        🚏 Ungraduate 温和敏感 网络原住民<br>
-        🎧 常驻 ACG 死宅 | 羽球爱好 | 理想主义者
-    </div>
-
-    <!-- 主要爱好区块 -->
-    <div class="section-title"> 📎 Tags</div>
-    <div class="hobby-grid">
-        <span class="hobby-item"> 🏸 羽毛球 · 单打</span>
-        <span class="hobby-item"> ACG · 番剧 & 独立游戏</span>
-        <span class="hobby-item"> 🍥 友跨 / LGBT+</span>
-        <span class="hobby-item">📖 轻小说 & comic</span>
-        <span class="hobby-item"> 🎵 J-POP / 纯音乐 / 术力口</span>
-        <span class="hobby-item"> 东方project / 琪露诺单推</span>
-    </div>
-
-    <!-- 最近在玩的/在追的，类似参考网站的随意感 -->
-    <div class="section-title">🎧 Recent status</div>
-    <div class="tag-list">
-        <span class="tag"> 🎸 Bang Dream! It's MyGO!!!!!</span>
-        <span class="tag"> 羽毛球练习中</span>
-        <span class="tag"> Minecraft / 犹格索托斯的庭院</span>
-        <span class="tag"> [ Clannad ] after story</span>
-        <span class="tag"> 📃 日语N4研读中 ing~</span>
-    </div>
-
-    <!-- 一些关于“跨性别友好”的声明或小句子 -->
-    <div class="section-title">  Abaot me</div>
-    <div class="intro-text" style="background: #f2efe9;">
-        - Hasaki 🍥 尊重每一个性别认同与表达，尊重所有性少数群体。不管是称呼还是代词，请自在做自己。<br>
-        <br>
-        - 时不时会蹦出一些奇奇怪怪的想法和说不清的求知欲（雾）但因为三分钟热度的缘故导致知识面十分匮乏（对不起对不起）<br>
-        <br>
-        - 目前正在寻找新的热爱与动力，尽力适应各种变化，以及......克服自卑 (嗯对）<br>
-        <br>
-        - 希望遇到同样温柔、互相理解的仲間 💬 如果你有想聊的，随时可以找到我（笑）<br>
-        <br>
-        - 打算六月中旬尝试一下吉他弹唱，如果小有所成会考虑在社媒上发一些动态。
-    </div>
-
-    <!-- 联系/社交 类似简易列表，和参考站点的感觉类似 -->
-    <div class="section-title">📡 Personal links</div>
-    <ul class="link-list">
-        <li><a href="#"><span>🕊️ 推特 / X</span> <span style="margin-left: auto; font-size:0.7rem;">@hasaki_sama</span></a></li>
-        <li><a href="#"><span>📷 QQ / 日常</span> <span style="margin-left: auto; font-size:0.7rem;">@roika0612</span></a></li>
-        <li><a href="#"><span>✉️ 邮箱 (交流学习)</span> <span style="margin-left: auto; font-size:0.7rem;">hasaki.0612@gmail.com</span></a></li>
-    </ul>
-
-    <!-- 一个小角落，放一句喜欢的 ACG 台词 -->
-    <div class="small-note">
-        ⭐ 「人はひとりじゃない。何かと繋がっている。」—— 不是孤单一人，和什么紧紧相连。
-    </div>
-
-    <!-- 简单footer -->
-    <footer>
-        " Ciallo～ (∠・ω< )⌒★ "
-    </footer>
-</div>
 </body>
 </html>
